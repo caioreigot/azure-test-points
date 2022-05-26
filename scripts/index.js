@@ -8,7 +8,7 @@ const passwordEyeSlashButton = document.querySelector('.fa-eye-slash');
 const passwordEyeButton = document.querySelector('.fa-eye');
 
 const sendButton = document.querySelector('#send-btn');
-const sendButtonLoader = document.querySelector('#send-btn + .loader-container > .loader');
+const sendButtonLoader = document.querySelector('#send-btn + .loader');
 
 const rawButton = document.querySelector('#raw-btn');
 const downloadButton = document.querySelector('#download-btn');

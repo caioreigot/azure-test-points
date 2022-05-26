@@ -116,6 +116,14 @@ aside > .container input:focus {
   box-shadow: 0 0 6px #719ECE;
 }
 
+#send-btn-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+  justify-content: center;
+}
+
 #send-btn {
   max-width: 420px;
   width: 100%;
@@ -149,7 +157,6 @@ aside > .container input:focus {
 }
 
 .loader {
-  display: none;
   background-color: var(--onyx);
   border: 16px solid var(--onyx);
   border-radius: 50%;
@@ -160,12 +167,8 @@ aside > .container input:focus {
   animation: spin 1s ease-in-out infinite;
 }
 
-#send-btn + .loader-container {
-  width: 100%;
-  
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+#send-btn + .loader {
+  display: none;
 }
 
 /* Safari */

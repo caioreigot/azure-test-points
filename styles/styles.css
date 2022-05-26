@@ -34,6 +34,7 @@ aside {
 
   background-color: var(--alice-blue);
 
+  max-width: 480px;
   min-width: 300px;
   width: 30%;
   height: 100%;

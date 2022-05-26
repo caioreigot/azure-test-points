@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/9206ce94d1.js" crossorigin="anonymous"></script>
+  
+  <!-- My CSS -->
+  <link rel="stylesheet" href="./styles/styles.css">
+  <link rel="stylesheet" href="./styles/responsive.css">
+  
+  <title>Azure Test Points</title>
+</head>
+<body>
+  <aside>
+    <div class="container">
+      <h1>Dados</h1>
+      <input type="text" placeholder="Organização" id="organization-input">
+      <input type="text" placeholder="Projeto" id="project-input">
+    </div>
+  
+    <div class="container">
+      <h1>Autenticação</h1>
+      <input type="text" placeholder="Nome do usuário" id="username-input">
+      <input type="password" placeholder="Senha" id="password-input">
+      <i class="fa-solid fa-eye-slash"></i>
+      <i class="fa-solid fa-eye"></i>
+    </div>
+
+    <div>
+      <button id="send-btn">Enviar</button>
+      <div class="loader-container">
+        <div class="loader"></div>
+      </div>
+    </div>
+
+    <a class="footer" href="https://github.com/caioreigot" target="_blank">
+        <i class="fa-brands fa-github"></i> Caio Costa
+    </a>
+  </aside>
+
+  <main>
+    <div class="log-buttons">
+      <button id="raw-btn" title="Ver o JSON puro em outra aba">Raw</button>
+
+      <button id="download-btn" title="Download JSON">
+        <a class="download-anchor"></a>
+        <i class="fa-solid fa-download"></i>
+      </button>
+    </div>
+
+    <div class="log-display">
+      <h2 class="log-header">Resultados</h2>
+      <p class="log-content"></p>
+    </div>
+  </main>
+
+  <script src="./scripts/getTestPoints.js"></script>
+  <script src="./scripts/index.js"></script>
+</body>
+</html>

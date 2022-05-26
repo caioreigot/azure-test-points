@@ -1,0 +1,5 @@
+@media (max-height: 580px) {
+  aside > .footer {
+    display: none;
+  }
+}

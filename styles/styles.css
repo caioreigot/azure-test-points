@@ -1,0 +1,336 @@
+:root {
+  --alice-blue: #e8eef2;
+  --pale-silver: #d6c9c9;
+  --beau-blue: #c7d3dd;
+  --aero: #77b6ea;
+  --onyx: #37393a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: var(--onyx);
+
+  display: flex;
+  flex-direction: row;
+}
+
+/***** Aside *****/
+
+aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  position: relative;
+
+  background-color: var(--alice-blue);
+
+  min-width: 300px;
+  width: 30%;
+  height: 100%;
+
+  padding: 15px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+aside > .container {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+aside > .container h1 {
+  color: var(--onyx);
+
+  text-transform: uppercase;
+
+  font-family: 'Roboto', Arial;
+  font-weight: 400;
+}
+
+aside > .container:nth-child(2) {
+  margin: 40px 0;
+}
+
+aside > .container input {
+  max-width: 420px;
+  width: 100%;
+  height: 60px;
+
+  margin: 8px 0px;
+  padding: 15px;
+
+  background-color: #fff;
+
+  border: none;
+  border-radius: 6px;
+
+  box-shadow: 0px 2px 5px rgb(0, 0, 0, 0.2);
+
+  font-family: 'Roboto', Arial;
+  font-size: 1.1rem;
+}
+
+aside > .container input:-webkit-autofill {
+  background-color: transparent !important;
+  box-shadow: 0 0 0 50px white inset;
+  -webkit-box-shadow: 0 0 0 50px white inset;
+}
+
+#password-input {
+  padding-right: 55px;
+}
+
+aside .fa-eye-slash,
+aside .fa-eye {
+  color: var(--onyx);
+  
+  align-self: end;
+  cursor: pointer;
+
+  transform: scale(140%);
+  margin-top: -45px;
+  margin-right: 20px;
+}
+
+aside .fa-eye {
+  display: none;
+}
+
+aside > .container input:focus {
+  outline: none !important;
+  border: 2px solid var(--aero);
+  box-shadow: 0 0 6px #719ECE;
+}
+
+#send-btn {
+  max-width: 420px;
+  width: 100%;
+  
+  min-height: 50px;
+  height: 60px;
+
+  cursor: pointer;
+
+  padding: 0 20px;
+
+  box-shadow: 2px 5px 4px rgb(0, 0, 0, 0.2);
+  color: white;
+  background-color: var(--onyx);
+  
+  border: none;
+  border-radius: 10px;
+  
+  text-transform: uppercase;
+  font-size: 'Roboto', Arial;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+#send-btn:hover {
+  background-color: #434647;
+}
+
+#send-btn:active {
+  box-shadow: none;
+}
+
+.loader {
+  display: none;
+  background-color: var(--onyx);
+  border: 16px solid var(--onyx);
+  border-radius: 50%;
+  border-top: 16px solid var(--aero);
+  width: 60px;
+  height: 60px;
+  -webkit-animation: spin 1s ease-in-out infinite; /* Safari */
+  animation: spin 1s ease-in-out infinite;
+}
+
+#send-btn + .loader-container {
+  width: 100%;
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+aside > .footer {
+  position: absolute;
+  bottom: 0;
+
+  color: #fff;
+  font-family: 'Roboto', Arial;
+  font-size: 1.1rem;
+
+  padding: 10px 80px;
+  background-color: var(--onyx);
+
+  border: none;
+  border-radius: 10px 10px 0 0;
+
+  align-self: center;
+}
+
+aside > .footer {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/***** Fim Aside *****/
+
+main {
+  height: 100%;
+  width: 70%;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/***** Log *****/
+
+/***** Botões acima do Log *****/
+
+.log-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+
+  margin: 0 20px;
+}
+
+#raw-btn {
+  margin-left: 5px;
+  padding: 12px;
+
+  cursor: pointer;
+
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  font-weight: bold;
+  
+  border: 2px solid var(--alice-blue);
+  border-radius: 14px;
+  background-color: #37393a;
+  color: var(--alice-blue);
+}
+
+#raw-btn:hover {
+  background-color: white;
+  color: var(--onyx);
+  border: 2px solid transparent;
+}
+
+#raw-btn:active {
+  background-color: rgb(230, 230, 230);
+}
+
+#download-btn {
+  padding: 14px 16px;
+  margin-left: 10px;
+
+  background-color: #fff;
+  cursor: pointer;
+
+  font-family: 'Roboto', Arial;
+  font-size: 1.1rem;
+
+  border: 2px solid transparent;
+  border-radius: 8px;
+}
+
+#download-btn:active {
+  background-color: rgb(230, 230, 230);
+}
+
+#download-btn i {
+  transform: scale(140%);
+}
+
+/***** Fim Botões acima do Log *****/
+
+.log-display {
+  height: 80%;
+
+  display: flex;
+  flex-direction: column;
+
+  margin: 20px;
+  padding: 20px;
+
+  font-family: 'Roboto', Arial;
+  font-size: 1.2rem;
+  background-color: white;
+
+  border: 4px solid var(--alice-blue);
+  border-radius: 10px;
+
+  word-wrap: break-word;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.log-header {
+  margin: 0px 5px 0 5px;
+  padding-bottom: 15px;
+
+  color: var(--onyx);
+
+  text-align: center;
+  width: 100%;
+
+  border-bottom: 2px dashed var(--onyx);
+
+  font-family: 'Roboto', Arial;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.log-content {
+  margin-top: 25px;
+
+  font-family: 'Roboto', Arial;
+  font-size: 1.6rem;
+}
+
+/***** Fim Log *****/
+
+.red-highlight {
+  color: #ed3030;
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+
+.green-highlight {
+  color: #057b05;
+  font-weight: bold;
+  font-size: 1.6rem;
+}

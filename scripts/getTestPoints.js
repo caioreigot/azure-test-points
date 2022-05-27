@@ -1,9 +1,24 @@
+let isFetchingData = false;
+let dataCollected = [];
+
 function getData(
   organization,
   project,
   username,
   password
 ) {
+  /* Se esta função já estiver rodando, não
+  rodar novamente caso o usuário tente */
+  if (isFetchingData) {
+    logContent.innerHTML +=
+      `<p class="red-highlight">Aguarde, o programa já está buscando pelos dados!</p>`
+    
+    return;
+  }
+
+  isFetchingData = true;
+  clearLastResult();
+
   const fetchOptions = {
     method: 'get',
     headers: {
@@ -11,7 +26,7 @@ function getData(
     }
   }
 
-  // Endpoint da API para pegar todos os Plans
+  // Endpoint da API que pega todos os Plans
   const getPlansUrl = `https://dev.azure.com/${organization}/${project}/_apis/test/Plans/`;
 
   // Pegando todos os "Plans"
@@ -37,11 +52,10 @@ function getData(
           .then(suitesData => {
             increaseSuitesCollected(suitesData.value.length);
             getPoints(currentPlanId, suitesData.value);
-            // handleSuitesPercentage((++suitesCollected / plans.length) * 100);
           })
           .catch(handleError);
       // Delay de 20ms entre cada requisição
-      }, i * 20); 
+      }, i * 20);
     }
   }
 
@@ -53,14 +67,40 @@ function getData(
       setTimeout(() => {
         fetch(getPointsUrl, fetchOptions)
           .then(response => response.json())
-          .then(pointData => {
-            dataCollected.push(pointData);
-            increasePointsCollected(pointData.value.length || 1);
+          .then(pointsData => {
+            // Aplicando filtros para os dados coletados caso o usuário tenha ativado
+            const processedPointsData = filterCheckbox.checked 
+              ? applyFilters(pointsData)
+              : pointsData;
+
+            // Passando os dados para o array "dataCollected"
+            dataCollected.push(processedPointsData);
+
+            increasePointsCollected(pointsData.value.length || 1);
           })
           .catch(handleError);
       // Delay de 20ms entre cada requisição
       }, i * 20);
     }
+  }
+
+  // Regras de filtros para o Point Data
+  function applyFilters(pointsData) {
+    const processedPointsData = [];
+    
+    pointsData.value.forEach(point => {
+      delete point.testCase.url;
+      delete point.testCase.webUrl;
+
+      processedPointsData.push(
+        { 
+          outcome: point.outcome,
+          testCase: point.testCase 
+        }
+      );
+    });
+
+    return processedPointsData;
   }
 }
 
@@ -79,6 +119,17 @@ const increasePointsCollected = (amount) => {
   updateLog();
 }
 
+const clearLastResult = () => {
+  dataCollected = [];
+  
+  plansCollected = 0;
+  suitesCollected = 0;
+  pointsCollected = 0;
+}
+
+// Usado para armazenar o ID do intervalo definido na função "updateLog"
+let refreshInterval;
+
 const updateLog = () => {
   if (refreshInterval) {
     window.clearInterval(refreshInterval);
@@ -91,6 +142,7 @@ const updateLog = () => {
     
     window.clearInterval(refreshInterval);
 
+    isFetchingData = false;
     showSendButton();
   }, 2500);
 
@@ -102,7 +154,10 @@ const updateLog = () => {
 
 const handleError = (err) => {
   logContent.innerHTML += 
-    `<p class="red-highlight">${err}</p>`
+    `<p class="red-highlight">
+      ${err}
+    </p>`
 
+  isFetchingData = false;
   showSendButton();
 }

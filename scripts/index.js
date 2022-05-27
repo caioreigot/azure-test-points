@@ -13,10 +13,7 @@ const sendButtonLoader = document.querySelector('#send-btn + .loader');
 const rawButton = document.querySelector('#raw-btn');
 const downloadButton = document.querySelector('#download-btn');
 const anchor = document.querySelector('#download-btn .download-anchor');
-
-const dataCollected = [];
-
-let refreshInterval;
+const filterCheckbox = document.querySelector('#filter-checkbox');
 
 // Variáveis pra mostrar no log
 let plansCollected = 0;
@@ -50,7 +47,9 @@ sendButton.onclick = () => {
     getData(organization, project, username, password);
   } else {
     logContent.innerHTML = 
-      `<p class="red-highlight">Por favor, preencha todos os campos!</p>`;
+      `<p class="red-highlight">
+        Por favor, preencha todos os campos!
+      </p>`;
   }
 }
 

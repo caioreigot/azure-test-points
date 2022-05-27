@@ -227,6 +227,7 @@ main {
   display: flex;
   flex-direction: row;
   justify-content: start;
+  align-items: center;
 
   margin: 0 20px;
 }
@@ -259,7 +260,7 @@ main {
 
 #download-btn {
   padding: 14px 16px;
-  margin-left: 10px;
+  margin: 0 10px;
 
   background-color: #fff;
   cursor: pointer;
@@ -277,6 +278,18 @@ main {
 
 #download-btn i {
   transform: scale(140%);
+}
+
+#filter-cb-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+  margin-left: auto;
+}
+
+#filter-cb-container > label {
+  user-select: none;
 }
 
 /***** Fim Botões acima do Log *****/

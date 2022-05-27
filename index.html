@@ -13,6 +13,7 @@
   
   <!-- My CSS -->
   <link rel="stylesheet" href="./styles/styles.css">
+  <link rel="stylesheet" href="./styles/checkbox.css">
   <link rel="stylesheet" href="./styles/responsive.css">
   
   <title>Azure Test Points</title>
@@ -45,12 +46,17 @@
 
   <main>
     <div class="log-buttons">
-      <button id="raw-btn" title="Ver o JSON puro em outra aba">Raw</button>
+      <button id="raw-btn" title="Ver o JSON puro">Raw</button>
 
       <button id="download-btn" title="Download JSON">
         <a class="download-anchor"></a>
         <i class="fa-solid fa-download"></i>
       </button>
+
+      <p id="filter-cb-container">
+        <input type="checkbox" id="filter-checkbox"/>
+        <label for="filter-checkbox">Filtrar</label>
+      </p>
     </div>
 
     <div class="log-display">
